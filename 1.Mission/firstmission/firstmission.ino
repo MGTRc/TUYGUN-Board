@@ -1,9 +1,15 @@
+#include "PWM_IN.h"
+
+struct __TUYGUN_HandleTypeDef *TUYGUN;
+
 void setup() {
   // put your setup code here, to run once:
-ytfuythk
+  TUYGUN_setup_pin(TUYGUN);
+  Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  if(digitalRead(A2)==HIGH){
+      Serial.println("Kutuphane bas");
+    }
 }
