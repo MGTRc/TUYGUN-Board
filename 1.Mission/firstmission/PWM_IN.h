@@ -43,4 +43,5 @@ typedef struct __TUYGUN_HandleTypeDef
 //Functions for TUYGUN
 //***********************************
 TUYGUN_StatusTypeDef TUYGUN_setup_pin(struct __TUYGUN_HandleTypeDef *TUYGUN);
+TUYGUN_StatusTypeDef TUYGUN_PWM_Read(struct __TUYGUN_HandleTypeDef *TUYGUN);
 #endif 

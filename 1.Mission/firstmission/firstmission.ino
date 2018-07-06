@@ -1,16 +1,12 @@
 #include "PWM_IN.h"
 
+TUYGUN_HandleTypeDef TUYGUN;
 
 void setup() {
-  
   Serial.begin(9600);
 }
 
 void loop() {
- 
- pulseIn(Elevator,HIGH);
-  
-TUYGUN_HandleTypeDef Elevator;
-
- Serial.println(Elevator.TUYGUN_Elevator);
+  TUYGUN_PWM_Read(&TUYGUN);
+  Serial.println(TUYGUN.TUYGUN_Aileron);
 }

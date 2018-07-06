@@ -9,6 +9,10 @@ pinMode(Drop, INPUT);
 pinMode(Flap, INPUT);
 //pinMode(Reverse, INPUT);
 return TUYGUN_OK;
+}
 
+TUYGUN_StatusTypeDef TUYGUN_PWM_Read(struct __TUYGUN_HandleTypeDef *TUYGUN){
+  TUYGUN->TUYGUN_Aileron = pulseIn(Aileron,HIGH); 
+  return TUYGUN_OK;
 }
 
