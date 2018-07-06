@@ -5,7 +5,7 @@ pinMode(Throttle, INPUT);
 pinMode(Aileron, INPUT);
 pinMode(Elevator, INPUT);
 pinMode(Rudder, INPUT);
-pinMode(Shot, INPUT);
+pinMode(Drop, INPUT);
 pinMode(Flap, INPUT);
 //pinMode(Reverse, INPUT);
 return TUYGUN_OK;

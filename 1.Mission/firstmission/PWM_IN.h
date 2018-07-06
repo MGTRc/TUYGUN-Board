@@ -8,7 +8,7 @@
 #define Aileron (A3) //Aileron read pin Arduino (A3)
 #define Elevator (A4) //Elevator read pin Arduino (A4)
 #define Rudder (A5) //Rudder read pin Arduino (A5)
-#define Shot (A6) //Shot read pin Arduino (A6)
+#define Drop (A6) //Shot read pin Arduino (A6)
 #define Flap (A7)//Flap read pin Arduino (A7)
 //#define Reverse (A8)//Reverse read pin Arduino (A8)
 
