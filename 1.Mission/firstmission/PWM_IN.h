@@ -1,16 +1,15 @@
-#ifndef PWM_IN
-#define PWM_IN
+#ifndef _PWM_IN
+#define _PWM_IN
 //TUYGUN Pin Configuration 
 
 #include <Arduino.h>
 
-#define Throttle (A2) // Throttle read pin Arduino (A2)
-#define Aileron (A3) //Aileron read pin Arduino (A3)
-#define Elevator (A4) //Elevator read pin Arduino (A4)
-#define Rudder (A5) //Rudder read pin Arduino (A5)
-#define Drop (A6) //Shot read pin Arduino (A6)
-#define Flap (A7)//Flap read pin Arduino (A7)
-//#define Reverse (A8)//Reverse read pin Arduino (A8)
+#define Throttle  (A2) // Throttle read pin Arduino (A2)
+#define Aileron   (A3) //Aileron read pin Arduino (A3)
+#define Elevator  (A4) //Elevator read pin Arduino (A4)
+#define Rudder    (A5) //Rudder read pin Arduino (A5)
+#define Flap      (A6)//Flap read pin Arduino (A7)
+#define Reverse   (A7)//Reverse read pin Arduino (A8)
 
 //***********************************
 // TUYGUN Software Status Definitions          			        
@@ -42,6 +41,6 @@ typedef struct __TUYGUN_HandleTypeDef
 //***********************************
 //Functions for TUYGUN
 //***********************************
-TUYGUN_StatusTypeDef TUYGUN_setup_pin(struct __TUYGUN_HandleTypeDef *TUYGUN);
+TUYGUN_StatusTypeDef TUYGUN_Setup_Pin(struct __TUYGUN_HandleTypeDef *TUYGUN);
 TUYGUN_StatusTypeDef TUYGUN_PWM_Read(struct __TUYGUN_HandleTypeDef *TUYGUN);
 #endif 
