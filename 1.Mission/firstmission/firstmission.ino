@@ -1,12 +1,10 @@
 #include "PWM_IN.h"
-#include "Servo.h"
+#include "PWM_OUT.h"
 
 TUYGUN_HandleTypeDef TUYGUN;
-  Servo sg90;
-int attach =9;
+
 void setup() {
 Serial.begin(9600);
-sg90. attach(9);
 }
 
 void loop() {
@@ -20,7 +18,7 @@ void loop() {
   Serial.print("Rudder:");
   Serial.println(TUYGUN.TUYGUN_Rudder);
   
-  sg90.write (180);       // değiştirebiliriz sayıyı
+  servkont.write (180);       // değiştirebiliriz sayıyı
   
   
 }

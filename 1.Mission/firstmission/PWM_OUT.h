@@ -6,6 +6,8 @@
 //TUYGUN Pin Configuration 
 
 #include <Arduino.h>
+#include <Servo.h>
+
 
 #define Aileron1 (2)
 #define Aileron2 (3)
@@ -17,6 +19,9 @@
 #define Drop2    (9)
 #define Rudder1   (10) 
 #define Throttle1 (11) 
+
+  
+
 
 //***********************************
 // TUYGUN Software Status Definitions          			        
@@ -46,6 +51,7 @@ typedef struct __TUYGUN_HandleTypeDef
   uint16_t	TUYGUN_Drop2;
   uint16_t	TUYGUN_Flap1;
   uint16_t	TUYGUN_Flap2;
+  Servo servkont;
 
 }TUYGUN_HandleTypeDef;
 
@@ -54,6 +60,7 @@ typedef struct __TUYGUN_HandleTypeDef
 //***********************************
 TUYGUN_StatusTypeDef TUYGUN_Setup_Pin(struct __TUYGUN_HandleTypeDef *TUYGUN);
 TUYGUN_StatusTypeDef TUYGUN_PWM_Write(struct __TUYGUN_HandleTypeDef *TUYGUN);
+
 
 
 
