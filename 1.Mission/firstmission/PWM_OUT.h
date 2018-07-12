@@ -19,7 +19,7 @@
 #define Drop2    (9)
 #define Rudder1   (10) 
 #define Throttle1 (11) 
-
+#define servo1 //  buraya servoyu Tanımladığımızda ise daha ilginç bir hata veriyor onun çözümünü de bulamadık.
   
 
 
@@ -51,7 +51,18 @@ typedef struct __TUYGUN_HandleTypeDef
   uint16_t	TUYGUN_Drop2;
   uint16_t	TUYGUN_Flap1;
   uint16_t	TUYGUN_Flap2;
-  Servo servkont;
+  
+  Servo  servo1;
+  Servo servo2;
+  Servo servo3;
+  Servo servo4;
+  Servo servo5;
+  Servo servo6;
+  Servo servo7;
+  Servo servo8;
+  Servo servo9;
+  Servo servo10;
+  
 
 }TUYGUN_HandleTypeDef;
 

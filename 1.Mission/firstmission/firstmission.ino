@@ -18,7 +18,11 @@ void loop() {
   Serial.print("Rudder:");
   Serial.println(TUYGUN.TUYGUN_Rudder);
   
-  servkont.write (180);       // değiştirebiliriz sayıyı
-  
+  TUYGUN_PWM_Write(&TUYGUN);
+  TUYGUN.servo1.write (180);
+
+    // bu kısmı anlamadık. Yukarıdaki read fonksiyonuna structı çağırdığımız gibi write fonksiyonu için de struct çağırmamız 
+    //gerektiğini düşündük ama sen maine servo ile ilgili hiçbir şey olmasın dedin o yüzden birçok değişiklik yaptık kodda ama
+    // hatasız derleyemedik sıkıntıyı çözemedik. Koddaki sıkıntıya bir de sen bakar mısın
   
 }
