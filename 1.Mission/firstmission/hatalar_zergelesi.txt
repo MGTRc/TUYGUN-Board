@@ -1,0 +1,8 @@
+1. Farkli kütüphanelerde ayni isimle HandleTypeDef olusturmussunuz. Burada sizin düsünmeniz gereken ayni adli
+seyle iki farkli nasil tanimlanmabilir. Yani bir sinifta iki kisi var ve ikisininde ismi Yusuf. Eger hoca
+yusuf derse bir karmasa olucaktir.
+2. Sadece olusturdugun kütüphane için ifndef define ve endif olusturulur.
+3. Size setup fonksiyonlarinda ayar yapildigini söylemistim. Servo attach olayinin ne olduguna bakarsaniz nerede
+kullanmaniz gerektiginizi anlarsiniz.
+4. PWM_In ile PWM_Out bütün fonksiyonlar ayni oldugu için hata veriyor.Ikisinin basindaki TUYGUN taglarini PWM_In için PWM_In ve PWM_Out için PWM_Out
+yapalim ki derleyecinin kafasi karismasin.
