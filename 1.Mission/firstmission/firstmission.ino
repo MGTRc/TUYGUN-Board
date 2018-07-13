@@ -2,7 +2,7 @@
 #include "PWM_OUT.h"
 
 TUYGUN_HandleTypeDef TUYGUN;
-
+TUYGUN_HandleTypeDef1 TUYGUN1;
 void setup() {
 Serial.begin(9600);
 }
@@ -10,19 +10,17 @@ Serial.begin(9600);
 void loop() {
   TUYGUN_PWM_Read(&TUYGUN);
   Serial.print("Throttle:");
-  Serial.println(TUYGUN.TUYGUN_Throttle);
+  Serial.println(TUYGUN.PWM_In_Throttle);
   Serial.print("Aileron:");
-  Serial.println(TUYGUN.TUYGUN_Aileron);
+  Serial.println(TUYGUN.PWM_In_Aileron);
   Serial.print("Elevator:");
-  Serial.println(TUYGUN.TUYGUN_Elevator);
+  Serial.println(TUYGUN.PWM_In_Elevator);
   Serial.print("Rudder:");
-  Serial.println(TUYGUN.TUYGUN_Rudder);
+  Serial.println(TUYGUN.PWM_In_Rudder);
   
-  TUYGUN_PWM_Write(&TUYGUN);
-  TUYGUN.servo1.write (180);
+TUYGUN_PWM_Write(&TUYGUN1);
+TUYGUN1.servo1.writeMicroseconds (500);
 
-    // bu kısmı anlamadık. Yukarıdaki read fonksiyonuna structı çağırdığımız gibi write fonksiyonu için de struct çağırmamız 
-    //gerektiğini düşündük ama sen maine servo ile ilgili hiçbir şey olmasın dedin o yüzden birçok değişiklik yaptık kodda ama
-    // hatasız derleyemedik sıkıntıyı çözemedik. Koddaki sıkıntıya bir de sen bakar mısın
+  
   
 }

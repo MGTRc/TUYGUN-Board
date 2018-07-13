@@ -30,13 +30,13 @@ TUYGUN_StatusTypeDef;
 //***********************************
 typedef struct __TUYGUN_HandleTypeDef
 {
-  uint16_t	TUYGUN_Throttle;
-  uint16_t	TUYGUN_Aileron;
-  uint16_t	TUYGUN_Elevator;
-  uint16_t	TUYGUN_Rudder;
-  uint16_t	TUYGUN_Drop;
-  uint16_t	TUYGUN_Flap;
-  uint16_t	TUYGUN_Reverse;
+  uint16_t	PWM_In_Throttle;
+  uint16_t	PWM_In_Aileron;
+  uint16_t	PWM_In_Elevator;
+  uint16_t	PWM_In_Rudder;
+  uint16_t	PWM_In_Drop;
+  uint16_t	PWM_In_Flap;
+  uint16_t	PWM_In_Reverse;
 }TUYGUN_HandleTypeDef;
 
 //***********************************

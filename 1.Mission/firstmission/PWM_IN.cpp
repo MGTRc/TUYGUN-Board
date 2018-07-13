@@ -12,11 +12,11 @@ return TUYGUN_OK;
 }
 
 TUYGUN_StatusTypeDef TUYGUN_PWM_Read(struct __TUYGUN_HandleTypeDef *TUYGUN){
-  TUYGUN->TUYGUN_Throttle = pulseIn(Throttle,HIGH);
-  TUYGUN->TUYGUN_Aileron   = pulseIn(Aileron,HIGH);
-  TUYGUN->TUYGUN_Elevator   = pulseIn(Elevator,HIGH);
-  TUYGUN->TUYGUN_Rudder   = pulseIn(Rudder,HIGH);
-  TUYGUN->TUYGUN_Flap       = pulseIn(Flap,HIGH); 
+  TUYGUN->PWM_In_Throttle = pulseIn(Throttle,HIGH);
+  TUYGUN->PWM_In_Aileron   = pulseIn(Aileron,HIGH);
+  TUYGUN->PWM_In_Elevator   = pulseIn(Elevator,HIGH);
+  TUYGUN->PWM_In_Rudder   = pulseIn(Rudder,HIGH);
+  TUYGUN->PWM_In_Flap       = pulseIn(Flap,HIGH); 
   return TUYGUN_OK;
 }
 
