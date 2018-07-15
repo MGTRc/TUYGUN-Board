@@ -2,77 +2,68 @@
 #define _PWN_OUT
 
 
-//TUYGUN Pin Configuration 
+//PWM_Out Pin Configuration 
 
 #include <Arduino.h>
 #include <Servo.h>
 
 
-#define Aileron1 (2)
-#define Aileron2 (3)
-#define Flap1    (4)
-#define Flap2    (5)
-#define Vtail1   (6) 
-#define Vtail2   (7) 
-#define Drop1    (8)
-#define Drop2    (9)
-#define Rudder1   (10) 
-#define Throttle1 (11) 
-// #define servo1 //  buraya servoyu Tanımladığımızda ise daha ilginç bir hata veriyor onun çözümünü de bulamadık.
-  
-
+#define Aileron_1 (2)
+#define Aileron_2 (3)
+#define Flap_1    (4)
+#define Flap_2    (5)
+#define Vtail_1   (6) 
+#define Vtail_2   (7) 
+#define Drop_1    (8)
+#define Drop_2    (9)
+#define Rudder_1   (10) 
+#define Throttle_1 (11) 
 
 //***********************************
-// TUYGUN Software Status Definitions          			        
+// PWM_Out Software Status Definitions          			        
 //***********************************
 
-typedef enum TUYGUN_StatusTypeDef1
+typedef enum PWM_OUT_StatusTypeDef
 {
-  TUYGUN_ERROR1,
-  TUYGUN_OK1,
-  TUYGUN_BUSY1,
-  TUYGUN_TIMEOUT1,
-}
-TUYGUN_StatusTypeDef1;
+  PWM_Out_ERROR,
+  PWM_Out_OK,
+  PWM_Out_BUSY,
+  TPWM_Out_TIMEOUT,
+}PWM_OUT_StatusTypeDef;
 
-//***********************************
-// TUYGUN Handle Struct
-//***********************************
-typedef struct __TUYGUN_HandleTypeDef1
-{
-  uint16_t	PWM_Out_Throttle;
-  uint16_t	PWM_Out_Aileron1;
-  uint16_t	PWM_Out_Aileron2;
-  uint16_t	PWM_Out_Elevator1;
-  uint16_t	PWM_Out_Elevator2;
-  uint16_t  PWM_Out_Rudder;
-  uint16_t	PWM_Out_Drop1;
-  uint16_t	PWM_Out_Drop2;
-  uint16_t	PWM_Out_Flap1;
-  uint16_t	PWM_Out_Flap2;
-  
- Servo servo1;
- Servo servo2;
- Servo servo3;
- Servo servo4;
- Servo servo5;
- Servo servo6;
- Servo servo7;
- Servo servo8;
- Servo servo9;
- Servo servo10;
+
+typedef struct  __PWM_OUT_HandleTypeDef{
+  //Ailerons
+  uint16_t PWM_Aileron_Left;
+  uint16_t PWM_Aileron_Right;
+  //V-Tail
+  uint16_t PWM_VTail_Left;
+  uint16_t PWM_VTail_Right;
+  //Flaps
+  uint16_t PWM_Flap_Left;
+  uint16_t PWM_Flap_Right;
+  //Others
+  uint16_t PWM_Throttle;
+  uint16_t PWM_Landing_Gear;
+  uint16_t PWM_Cover_1;
+  uint16_t PWM_Cover_2;
+
+  //Servos
+  Servo Aileron_Left,Aileron_Right;
+  Servo Vtail_Left,Vtail_Right;
+  Servo Flap_Left,Flap_Right;
+  Servo Throttle,Landing_Gear;
+  Servo Cover_1,Cover_2;
+
+}PWM_OUT_HandleTypeDef;
   
  
-  
-
-}TUYGUN_HandleTypeDef1;
 
 //***********************************
-//Functions for TUYGUN
+//Functions for PWM_Out
 //***********************************
-TUYGUN_StatusTypeDef1 TUYGUN_Setup_Pin(struct __TUYGUN_HandleTypeDef1 *TUYGUN1);
-TUYGUN_StatusTypeDef1 TUYGUN_PWM_Write(struct __TUYGUN_HandleTypeDef1 *TUYGUN1);
-
+PWM_OUT_StatusTypeDef PWM_OUT_Setup_Pin(struct __PWM_OUT_HandleTypeDef *PWM_Out);
+PWM_OUT_StatusTypeDef PWM_OUT_PWM_Write(struct __PWM_OUT_HandleTypeDef *PWM_Out);
 
 
 #endif

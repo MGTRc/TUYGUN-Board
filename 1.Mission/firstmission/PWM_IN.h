@@ -1,6 +1,8 @@
 #ifndef PWM_IN
 #define PWM_IN
-//TUYGUN Pin Configuration 
+
+
+//PWM_In Pin Configuration 
 
 #include <Arduino.h>
 
@@ -13,22 +15,22 @@
 //#define Reverse (A8)//Reverse read pin Arduino (A8)
 
 //***********************************
-// TUYGUN Software Status Definitions          			        
+// PWM_In Software Status Definitions          			        
 //***********************************
 
-typedef enum TUYGUN_StatusTypeDef
+typedef enum PWM_IN_StatusTypeDef
 {
-  TUYGUN_ERROR,
-  TUYGUN_OK,
-  TUYGUN_BUSY,
-  TUYGUN_TIMEOUT,
+  PWM_In_ERROR,
+  PWM_In_OK,
+  PWM_In_BUSY,
+  PWM_In_TIMEOUT,
 }
-TUYGUN_StatusTypeDef;
+PWM_IN_StatusTypeDef;
 
 //***********************************
 // TUYGUN Handle Struct
 //***********************************
-typedef struct __TUYGUN_HandleTypeDef
+typedef struct __PWM_IN_HandleTypeDef
 {
   uint16_t	PWM_In_Throttle;
   uint16_t	PWM_In_Aileron;
@@ -37,11 +39,11 @@ typedef struct __TUYGUN_HandleTypeDef
   uint16_t	PWM_In_Drop;
   uint16_t	PWM_In_Flap;
   uint16_t	PWM_In_Reverse;
-}TUYGUN_HandleTypeDef;
+}PWM_IN_HandleTypeDef;
 
 //***********************************
-//Functions for TUYGUN
+//Functions for PWM_In
 //***********************************
-TUYGUN_StatusTypeDef TUYGUN_setup_pin(struct __TUYGUN_HandleTypeDef *TUYGUN);
-TUYGUN_StatusTypeDef TUYGUN_PWM_Read(struct __TUYGUN_HandleTypeDef *TUYGUN);
+PWM_IN_StatusTypeDef PWM_IN_setup_pin(struct __PWM_IN_HandleTypeDef *PWM_In);
+PWM_IN_StatusTypeDef PWM_IN_PWM_Read(struct __PWM_IN_HandleTypeDef *PWM_In);
 #endif 

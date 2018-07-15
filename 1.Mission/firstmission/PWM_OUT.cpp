@@ -1,51 +1,44 @@
 #include "PWM_OUT.h"
 #include "Servo.h"
-  Servo servo1; // Bu değişkenler kütüphane dosyasına ait değişkenler
-  Servo servo2; // Bunların Struct'un bir elemanı olması gerekiyor.
-  Servo servo3;
-  Servo servo4;
-  Servo servo5;
-  Servo servo6;
-  Servo servo7;
-  Servo servo8;
-  Servo servo9;
-  Servo servo10;
-TUYGUN_StatusTypeDef1 TUYGUN_Setup_Pin(struct __TUYGUN_HandleTypeDef1 *TUYGUN1){
-	pinMode(Aileron1, OUTPUT);
-  pinMode(Aileron2, OUTPUT);
-  pinMode(Vtail1, OUTPUT);
-  pinMode(Vtail2, OUTPUT);
-  pinMode(Rudder1, OUTPUT);
-	pinMode(Flap1, OUTPUT);
-  pinMode(Flap2, OUTPUT);
-	pinMode(Drop1, OUTPUT);
-  pinMode(Drop2, OUTPUT);
-  pinMode(Rudder1, OUTPUT);
-  pinMode(Throttle1, OUTPUT);
-  servo1.attach(1);       
-  servo2.attach(2);    
-  servo3.attach(3);
-  servo4.attach(4);
-  servo5.attach(5);
-  servo6.attach(6);
-  servo7.attach(7);
-  servo8.attach(8);
-  servo9.attach(9);
-  servo10.attach(10);
-  return TUYGUN_OK1;
-}
-  TUYGUN_StatusTypeDef1 TUYGUN_PWM_Write(struct __TUYGUN_HandleTypeDef1 *TUYGUN1){
 
-  TUYGUN1->servo1;
-  TUYGUN1->servo2;
-  TUYGUN1->servo3;
-  TUYGUN1->servo4;
-  TUYGUN1->servo5;
-  TUYGUN1->servo6;
-  TUYGUN1->servo7;
-  TUYGUN1->servo8;
-  TUYGUN1->servo9;
-  TUYGUN1->servo10;
-	return TUYGUN_OK1;
+ 
+PWM_OUT_StatusTypeDef PWM_OUT_Setup_Pin(struct __PWM_OUT_HandleTypeDef *PWM_Out){
+	pinMode(Aileron_1, OUTPUT);
+  pinMode(Aileron_2, OUTPUT);
+  pinMode(Vtail_1, OUTPUT);
+  pinMode(Vtail_2, OUTPUT);
+  pinMode(Rudder_1, OUTPUT);
+	pinMode(Flap_1, OUTPUT);
+  pinMode(Flap_2, OUTPUT);
+	pinMode(Drop_1, OUTPUT);
+  pinMode(Drop_2, OUTPUT);
+  pinMode(Rudder_1, OUTPUT);
+  pinMode(Throttle_1, OUTPUT);
+  Aileron_Left.attach(1);       
+  Aileron_Right.attach(2);    
+  Vtail_Left.attach(3);
+  Vtail_Right.attach(4);
+  Flap_Left.attach(5);
+  Flap_Right.attach(6);
+  Throttle.attach(7);
+  Landing_Gear.attach(8);
+  Cover_1.attach(9);
+  Cover_2.attach(10);
+  return PWM_Out_OK;
+}
+  PWM_OUT_StatusTypeDef PWM_OUT_PWM_Write(struct __PWM_OUT_HandleTypeDef *PWM_Out){
+
+  PWM_Out->Aileron_Left;
+  PWM_Out->Aileron_Right;
+  PWM_Out->Vtail_Left;
+  PWM_Out->Vtail_Right;
+  PWM_Out->Flap_Left;
+  PWM_Out->Flap_Right;
+  PWM_Out->Throttle;
+  PWM_Out->Landing_Gear;
+  PWM_Out->Cover_1;
+  PWM_Out->Cover_2;
+  Aileron_Left.writeMicroseconds (500);
+	return PWM_Out_OK;
 }
 

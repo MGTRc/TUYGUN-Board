@@ -1,6 +1,6 @@
 #include "PWM_IN.h"
 
-TUYGUN_StatusTypeDef TUYGUN_setup_pin(struct __TUYGUN_HandleTypeDef *TUYGUN){
+PWM_IN_StatusTypeDef PWM_IN_setup_pin(struct __TPWM_IN_HandleTypeDef *PWM_In){
 pinMode(Throttle, INPUT);
 pinMode(Aileron, INPUT);
 pinMode(Elevator, INPUT);
@@ -8,15 +8,15 @@ pinMode(Rudder, INPUT);
 pinMode(Drop, INPUT);
 pinMode(Flap, INPUT);
 //pinMode(Reverse, INPUT);
-return TUYGUN_OK;
+return PWM_In_OK;
 }
 
-TUYGUN_StatusTypeDef TUYGUN_PWM_Read(struct __TUYGUN_HandleTypeDef *TUYGUN){
-  TUYGUN->PWM_In_Throttle = pulseIn(Throttle,HIGH);
-  TUYGUN->PWM_In_Aileron   = pulseIn(Aileron,HIGH);
-  TUYGUN->PWM_In_Elevator   = pulseIn(Elevator,HIGH);
-  TUYGUN->PWM_In_Rudder   = pulseIn(Rudder,HIGH);
-  TUYGUN->PWM_In_Flap       = pulseIn(Flap,HIGH); 
-  return TUYGUN_OK;
+PWM_IN_StatusTypeDef PWM_IN_PWM_Read(struct __PWM_IN_HandleTypeDef *PWM_In){
+  PWM_In->PWM_In_Throttle = pulseIn(Throttle,HIGH);
+  PWM_In->PWM_In_Aileron   = pulseIn(Aileron,HIGH);
+  PWM_In->PWM_In_Elevator   = pulseIn(Elevator,HIGH);
+  PWM_In->PWM_In_Rudder   = pulseIn(Rudder,HIGH);
+  PWM_In->PWM_In_Flap       = pulseIn(Flap,HIGH); 
+  return PWM_In_OK;
 }
 
