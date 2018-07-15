@@ -1,7 +1,7 @@
 #include "PWM_OUT.h"
 #include "Servo.h"
-  Servo servo1;
-  Servo servo2;
+  Servo servo1; // Bu değişkenler kütüphane dosyasına ait değişkenler
+  Servo servo2; // Bunların Struct'un bir elemanı olması gerekiyor.
   Servo servo3;
   Servo servo4;
   Servo servo5;
@@ -46,8 +46,6 @@ TUYGUN_StatusTypeDef1 TUYGUN_Setup_Pin(struct __TUYGUN_HandleTypeDef1 *TUYGUN1){
   TUYGUN1->servo8;
   TUYGUN1->servo9;
   TUYGUN1->servo10;
- 
-     
 	return TUYGUN_OK1;
 }
 
