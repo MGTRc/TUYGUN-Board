@@ -2,7 +2,7 @@
 #include "PWM_OUT.h"
 
 PWM_IN_HandleTypeDef PWM_In;   
-PWM_OUT_HandleTypeDef  PWM_Out; 
+PWM_OUT_HandleTypeDef PWM_Out; 
                                
 void setup() {
 Serial.begin(9600);

@@ -14,9 +14,9 @@ PWM_OUT_StatusTypeDef PWM_OUT_Setup_Pin(struct __PWM_OUT_HandleTypeDef *PWM_Out)
   pinMode(Drop_2, OUTPUT);
   pinMode(Rudder_1, OUTPUT);
   pinMode(Throttle_1, OUTPUT);
-  Aileron_Left.attach(1);       
-  Aileron_Right.attach(2);    
-  Vtail_Left.attach(3);
+  Aileron_Left.attach(Aileron_1);    // Aileron 1 header dosyasında 2.pin olarak tanımlanmış ama burada 1 görünüyor.   
+  Aileron_Right.attach(2);           // İkinci durum pinlerin kolay değişmesi için headerde define ettik.
+  Vtail_Left.attach(3);             
   Vtail_Right.attach(4);
   Flap_Left.attach(5);
   Flap_Right.attach(6);
@@ -38,7 +38,7 @@ PWM_OUT_StatusTypeDef PWM_OUT_Setup_Pin(struct __PWM_OUT_HandleTypeDef *PWM_Out)
   PWM_Out->Landing_Gear;
   PWM_Out->Cover_1;
   PWM_Out->Cover_2;
-  Aileron_Left.writeMicroseconds (500);
+  Aileron_Left.writeMicroseconds (PWM_OUT->PWM_Aileron_Left); // Burası hata veriyor ve sürekli değişken olucak.
 	return PWM_Out_OK;
 }
 
