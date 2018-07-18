@@ -13,7 +13,8 @@ PWM_OUT_StatusTypeDef PWM_OUT_Setup_Pin(struct __PWM_OUT_HandleTypeDef *PWM_Out)
   pinMode(Drop_2, OUTPUT);
   pinMode(Rudder_1, OUTPUT);
   pinMode(Throttle_1, OUTPUT);
-  Aileron_Left.attach(2);   
+  
+  Aileron_Left.attach(2);   //  Aileron_Left.attach(Aileron_1) şeklinde olucak;
   Aileron_Right.attach(3);          
   Flap_Left.attach(4);
   Flap_Right.attach(5);
@@ -27,20 +28,8 @@ PWM_OUT_StatusTypeDef PWM_OUT_Setup_Pin(struct __PWM_OUT_HandleTypeDef *PWM_Out)
 }
 
 
-  PWM_OUT_StatusTypeDef PWM_OUT_PWM_Write(struct __PWM_OUT_HandleTypeDef *PWM_Out){
-
-  PWM_Out->Aileron_Left ;
-  PWM_Out->Aileron_Right;
-  PWM_Out->Vtail_Left;
-  PWM_Out->Vtail_Right;
-  PWM_Out->Flap_Left;
-  PWM_Out->Flap_Right;
-  PWM_Out->Throttle;
-  PWM_Out->Landing_Gear;
-  PWM_Out->Cover_1;
-  PWM_Out->Cover_2;
-
-  Aileron_Left.writeMicroseconds(PWM_Out->PWM_Aileron_Left); 
+PWM_OUT_StatusTypeDef PWM_OUT_PWM_Write(struct __PWM_OUT_HandleTypeDef *PWM_Out){
+  Aileron_Left.writeMicroseconds(PWM_Out->PWM_Aileron_Left); // Bizim toplamda 8-10 tane çıkısımız var.
 	return PWM_Out_OK;
 }
 

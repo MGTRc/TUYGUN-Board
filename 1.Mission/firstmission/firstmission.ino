@@ -20,6 +20,6 @@ void loop() {
   Serial.println(PWM_In.PWM_In_Rudder);
  
 PWM_OUT_PWM_Write(&PWM_Out);
-PWM_Out.Aileron_Left.writeMicroseconds (500); // Burada zaten PWM_Write fonksiyonu içinde değil mi?
+PWM_Out.Aileron_Left.writeMicroseconds (500); // PWM_Write Çalışınca buda çalısıyor.
 
 }
