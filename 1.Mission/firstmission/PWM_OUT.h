@@ -34,7 +34,7 @@ typedef enum PWM_OUT_StatusTypeDef
 
 typedef struct  __PWM_OUT_HandleTypeDef{
   //Ailerons
-  uint16_t PWM_Aileron_Left;
+  uint16_t Aileron_1;
   uint16_t PWM_Aileron_Right;
   //V-Tail
   uint16_t PWM_VTail_Left;
@@ -49,7 +49,7 @@ typedef struct  __PWM_OUT_HandleTypeDef{
   uint16_t PWM_Cover_2;
 
   //Servos
-  Servo Aileron_Left,Aileron_Right;
+  Servo Aileron_1,Aileron_Right;
   Servo Vtail_Left,Vtail_Right;
   Servo Flap_Left,Flap_Right;
   Servo Throttle,Landing_Gear;

@@ -46,4 +46,6 @@ typedef struct __PWM_IN_HandleTypeDef
 //***********************************
 PWM_IN_StatusTypeDef PWM_IN_setup_pin(struct __PWM_IN_HandleTypeDef *PWM_In);
 PWM_IN_StatusTypeDef PWM_IN_PWM_Read(struct __PWM_IN_HandleTypeDef *PWM_In);
+
+
 #endif 
