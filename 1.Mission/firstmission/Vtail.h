@@ -9,10 +9,15 @@
 #define Rudder (A5) //Rudder read pin Arduino (A5)
 #define Drop (A6) //Drop read pin Arduino (A6)
 #define Flap (A7)//Flap read pin Arduino (A7)//*******************
-#define stabil durum 1500
+#define stabil durum 1500 // Bunun Setup fonksiyonu içinde set edilmesi gerektiğini dokumanda yazmıştım.
+
+// Kodlarama değişken adları boşluklu olmaz.
+//PWM değerleri oluşturdupunun PWM_IN_HandleTypeDef PWM_In içerisinde oluşmaktadır. Bu değişken içerisinden bu değerleri almanız gerekiyor.
+//Kütüphane oluştururkken , header dosyasına değişkenler ve fonksiyonları tanımlıyorduk. CPP kısmında ise içini dolduruyoruk.
+
 int gelen deger,sonuc; 
 if (stabil durum=Elevator && stabil durum=Rudder){
-  |(gelen deger-1500)|*0.25=sonuc;
+  |(gelen deger-1500)|*0.25=sonuc;  
   Elevator=1500-sonuc;
   Rudder=1500+sonuc;
 }
