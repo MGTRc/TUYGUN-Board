@@ -27,9 +27,9 @@ PWM_OUT_StatusTypeDef PWM_OUT_Setup_Pin(struct __PWM_OUT_HandleTypeDef *PWM_Out)
   return PWM_Out_OK;
 }
 
-
+// Buarada hata alıyorum.
 PWM_OUT_StatusTypeDef PWM_OUT_PWM_Write(struct __PWM_OUT_HandleTypeDef *PWM_Out){
-  Aileron_Left.writeMicroseconds(PWM_Out->PWM_Aileron_Left); 
+  Aileron_Left.writeMicroseconds(PWM_Out->PWM_Aileron_Left); //İpucu bu değiken PWM_Out'in içinde tanımlı. Kısaca referans göstermelisiniz.
   Aileron_Right.writeMicroseconds(PWM_Out->PWM_Aileron_Right);
   Flap_Left.writeMicroseconds(PWM_Out->PWM_Flap_Left);   
   Flap_Right.writeMicroseconds(PWM_Out->PWM_Flap_Right);

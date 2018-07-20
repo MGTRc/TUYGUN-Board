@@ -1,5 +1,7 @@
 #include "PWM_IN.h"
 #include "PWM_OUT.h"
+// Vtail kütüphanesi aktif edilmeli.
+// Değişkeni oluşturulmalı.
 
 PWM_IN_HandleTypeDef PWM_In;   
 PWM_OUT_HandleTypeDef PWM_Out; 
@@ -18,10 +20,5 @@ void loop() {
   Serial.println(PWM_In.PWM_In_Elevator);
   Serial.print("Rudder:");
   Serial.println(PWM_In.PWM_In_Rudder);
- 
 PWM_OUT_PWM_Write(&PWM_Out);
-
-PWM_Out.Aileron_Left.writeMicroseconds (500); // PWM_ıWrite Çalşınca buda çalısıyor.
-
-
 }
