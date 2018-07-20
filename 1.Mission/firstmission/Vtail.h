@@ -4,9 +4,11 @@
 #include "PWM_IN.h"
 
 
-#define Vtail_Elevator  //Elevator read pin Arduino (A4)//PWM_IN kütüphanesinden gelen değerler
-#define Vtail_Rudder  //Rudder read pin Arduino (A5)
-#define Vtail_Spoiler //Aileron read pin Arduino (A3)
+
+
+#define Vtail_Elevator  
+#define Vtail_Rudder  
+#define Vtail_Aileron 
 
 
  typedef enum Vtail_StatusTypeDef //return Vtail_OK yazabilmek için bunu ekledik.Doğru mu bilmiyoruz.
