@@ -1,6 +1,7 @@
 #include "PWM_OUT.h"
 #include "Servo.h"
 
+
 PWM_OUT_StatusTypeDef PWM_OUT_Setup_Pin(struct __PWM_OUT_HandleTypeDef *PWM_Out){
 	pinMode(Aileron_1, OUTPUT);
   pinMode(Aileron_2, OUTPUT);
@@ -27,10 +28,10 @@ PWM_OUT_StatusTypeDef PWM_OUT_Setup_Pin(struct __PWM_OUT_HandleTypeDef *PWM_Out)
   return PWM_Out_OK;
 }
 
-// Buarada hata alıyorum.
+// Buarada hata al�yorum.
 PWM_OUT_StatusTypeDef PWM_OUT_PWM_Write(struct __PWM_OUT_HandleTypeDef *PWM_Out){
-  Aileron_Left.writeMicroseconds(PWM_Out->PWM_Aileron_Left); //İpucu bu değiken PWM_Out'in içinde tanımlı. Kısaca referans göstermelisiniz.
-  Aileron_Right.writeMicroseconds(PWM_Out->PWM_Aileron_Right);
+  Aileron_Left.writeMicroseconds(PWM_Out->PWM_Aileron_Left); //�pucu bu de�iken PWM_Out'in i�inde tan�ml�. K�saca referans g�stermelisiniz.
+  Aileron_Right.writeMicroseconds(PWM_Out->PWM_Aileron_Right);  // biz burayı yine anlamadik
   Flap_Left.writeMicroseconds(PWM_Out->PWM_Flap_Left);   
   Flap_Right.writeMicroseconds(PWM_Out->PWM_Flap_Right);
   Vtail_Left.writeMicroseconds(PWM_Out->PWM_VTail_Left);
@@ -41,4 +42,3 @@ PWM_OUT_StatusTypeDef PWM_OUT_PWM_Write(struct __PWM_OUT_HandleTypeDef *PWM_Out)
   Throttle.writeMicroseconds(PWM_Out->PWM_Throttle);
 	return PWM_Out_OK;
 }
-

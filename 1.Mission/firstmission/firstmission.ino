@@ -1,11 +1,11 @@
 #include "PWM_IN.h"
 #include "PWM_OUT.h"
-// Vtail kütüphanesi aktif edilmeli.
-// Değişkeni oluşturulmalı.
+#include "Vtail.h"
+
 
 PWM_IN_HandleTypeDef PWM_In;   
 PWM_OUT_HandleTypeDef PWM_Out; 
-                               
+Vtail_HandleTypeDef Vtail;                               
 void setup() {
 Serial.begin(9600);
 }
