@@ -19,7 +19,7 @@
 typedef struct  __Vtail_HandleTypeDef{
   uint16_t PWM_Vtail_Elevator;
   uint16_t PWM_Vtail_Aileron;
-  uint16_t stabil_durum=1500;                  
+  uint16_t stabil_durum=1500;  //   Bu değer ise Vtail_Setup fonksiyonunda tanımlanmalıdır.             
   uint16_t gelen_deger;
   uint16_t sonuc;
 
@@ -32,7 +32,7 @@ typedef struct  __Vtail_HandleTypeDef{
 Vtail_StatusTypeDef Vtail_Start(struct __Vtail_HandleTypeDef *Vtail);
 Vtail_StatusTypeDef Vtail_Setup(struct __Vtail_HandleTypeDef *Vtail);
 Vtail_StatusTypeDef Vtail_Start(struct __PWM_IN_HandleTypeDef *PWM_In);
-Vtail_StatusTypeDef Vtail_Start(struct __PWM_OUT_HandleTypeDef *PWM_Out);
+Vtail_StatusTypeDef Vtail_Start(struct __PWM_OUT_HandleTypeDef *PWM_Out);  // PDF'e bakarsanız bu şekilde tanımlanmamış.
 
 
 #endif Vtail
