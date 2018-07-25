@@ -19,7 +19,7 @@ PWM_OUT_StatusTypeDef PWM_OUT_Setup_Pin(struct __PWM_OUT_HandleTypeDef *PWM_Out)
   Aileron_Right.attach(Aileron_2);          
   Flap_Left.attach(Flap_1);
   Flap_Right.attach(Flap_2);
-  Vtail_Left.attach(Vtail_1);             
+  Vtail_Left.attach(Vtail_1);
   Vtail_Right.attach(Vtail_2);
   Cover_1.attach(Drop_1);
   Cover_2.attach(Drop_2);
@@ -31,7 +31,7 @@ PWM_OUT_StatusTypeDef PWM_OUT_Setup_Pin(struct __PWM_OUT_HandleTypeDef *PWM_Out)
 // Buarada hata al�yorum.
 PWM_OUT_StatusTypeDef PWM_OUT_PWM_Write(struct __PWM_OUT_HandleTypeDef *PWM_Out){
   Aileron_Left.writeMicroseconds(PWM_Out->PWM_Aileron_Left); //�pucu bu de�iken PWM_Out'in i�inde tan�ml�. K�saca referans g�stermelisiniz.
-  Aileron_Right.writeMicroseconds(PWM_Out->PWM_Aileron_Right);  // biz burayı yine anlamadik
+  Aileron_Right.writeMicroseconds(PWM_Out->PWM_Aileron_Right);  //  Kısaca referans göstermek ne demek.Biz burayı yine anlamadik
   Flap_Left.writeMicroseconds(PWM_Out->PWM_Flap_Left);   
   Flap_Right.writeMicroseconds(PWM_Out->PWM_Flap_Right);
   Vtail_Left.writeMicroseconds(PWM_Out->PWM_VTail_Left);

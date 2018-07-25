@@ -4,27 +4,31 @@
 Vtail_StatusTypeDef Vtail_Start(struct __PWM_IN_HandleTypeDef *PWM_In){
  PWM_In->PWM_In_Elevator = PWM_Vtail_Elevator ;
  PWM_In->PWM_In_Rudder = PWM_Vtail_Rudder ;
- // Word dosyasında 3 adet giriş olduğunu söyledim. Ancak okumaya zahmet göstermemissiniz.
- 
-  return Vtail_OK;
+ PWM_In->PWM_In_Reverse = PWM_Vtail_Reverse ; //AUX kanalından gelen değeri reverse olarak düşündük 
+   return Vtail_OK;
 }
 
-//Bu kısım komple yanlış. Word'de nasıl fonksiyonun oluşturulduğuna dikkatlı bir şekilde bakınız.
-// Spoiler kısmı ise, pixhawkdan gelen AUX kanalı okumanız gerekiyor. Eğer bu değer 1500 altında ise normal V-tail matematiği çalışırken
-// 1500 üstende ise maximum konumda çalıştırılacak. Örneğini Yunus ile yapmıştık.
-// Burada 0.25 çarpanı Vtail_Setup fonksiyonundan istendiği zaman değiştirebilmelidir. -> PDF'e yazılmış bir ibare!!!!
-Vtail_StatusTypeDef Vtail_Start(struct __PWM_OUT_HandleTypeDef *PWM_Out){
+
+// Burada 0.25 çarpanı Vtail_Setup fonksiyonundan istendiği zaman değiştirebilmelidir. // Bunu nsaıl yapacağımızı anlamadık.Bir değişken oluşturup ona 0.25 i mi atacağız?
+Vtail_StatusTypeDef Vtail_Setup(struct __Vtail_HandleTypeDef *Vtail){
  
-if (PWM_Vtail_Elevator!=1500){
-  fabs(PWM_Vtail_Elevator-1500)*0.25=Result;  
-  Vtail_Right=1500-Result;
-  Vtail_Left=1500+Result;
+if (PWM_Vtail_Reverse<1500){
+  fabs(PWM_Vtail_Elevator-1500)*0.25=Result_Elevator;  
+  Right=1500-Result_Elevator;
+  Left=1500+Result_Elevator;
+  fabs(PWM_Vtail_Rudder-1500)*0.25=Result_Rudder;  
+  Right=1500+Result_Rudder;
+  Left=1500+Result_Rudder;
 }
-else if(PWM_Vtail_Rudder!=1500){
-  fabs(PWM_Vtail_Rudder-1500)*0.25=Result;
-  Vtail_Right=1500+Result;
-  Vtail_Left=1500+Result;         
+else if(PWM_Vtail_Reverse>1500){
+  Right=1000;
+  Left=2000;
+
 }
+ PWM_Out->PWM_VTail_Right=Right ;
+ PWM_Out->PWM_VTail_Left=Left ;
+
+ 
 
     return Vtail_OK;
 }
