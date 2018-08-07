@@ -3,9 +3,9 @@
 #include "Vtail.h"
 
 
-PWM_IN_HandleTypeDef PWM_In;   
-PWM_OUT_HandleTypeDef PWM_Out; 
-Vtail_HandleTypeDef Vtail;                               
+PWM_IN_HandleTypeDef PWM_In;
+PWM_OUT_HandleTypeDef PWM_Out;
+Vtail_HandleTypeDef Vtail;
 void setup() {
 Serial.begin(9600);
 }
@@ -20,5 +20,5 @@ void loop() {
   Serial.println(PWM_In.PWM_In_Elevator);
   Serial.print("Rudder:");
   Serial.println(PWM_In.PWM_In_Rudder);
-PWM_OUT_PWM_Write(&PWM_Out);
+  PWM_OUT_PWM_Write(&PWM_Out);
 }
