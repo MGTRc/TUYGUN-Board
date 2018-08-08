@@ -3,14 +3,14 @@
 
 #include <Arduino.h>
 
-#define Aileron_IN  (A2)
-#define Elevator_IN (A3)
-#define Throttle_IN (A4)
-#define Rudder_IN   (A5)
-#define AUX_1_IN    (A6)    //defined for Flap;
-#define AUX_2_IN    (A7)    //defined for Spoiler;
-#define AUX_3_IN    (A8)    //defined for Reverse Thrust;
-#define AUX_4_IN    (A9)    //Empty;
+//#define Aileron_IN  (A2)
+//#define Elevator_IN (A3)
+//#define Throttle_IN (A4)
+//#define Rudder_IN   (A5)
+#define AUX_1_IN    (A4)    //defined for Flap;
+//#define AUX_2_IN    (A7)    //defined for Spoiler;
+//#define AUX_3_IN    (A8)    //defined for Reverse Thrust;
+//#define AUX_4_IN    (A9)    //Empty;
 
 typedef enum PWM_IN_StatusTypeDef {
   PWM_IN_OK,
