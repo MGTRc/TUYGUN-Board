@@ -50,7 +50,7 @@ for(int i=9; i > 0; i--){
 
    Ultrasonic->ErrayDist[10]=Ultrasonic->Distance;
 
-for(int i=8; i > 0; i--){
+for(int i=8; i >= 0; i--){
 
         Ultrasonic->ErrayDist[i]=Ultrasonic->ErrayTemp[i];
 
