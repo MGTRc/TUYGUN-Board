@@ -14,12 +14,12 @@ Ultrasonic_Statustypedef Ultrasonic_Setup(struct __Ultrasonic_HandleTypeDef *Ult
   {
     Ultrasonic->ErrayDist[j]=0;
   }
-     
+
  for(int k=0 ; k<8 ; k++ )
   {
     Ultrasonic->ErrayTemp[k]=0;
   }
- 
+
   return Ultrasonic_OK;
 };
 
@@ -30,7 +30,7 @@ struct __PWM_IN_HandleTypeDef *PWM_IN){
 Ultrasonic->x = PWM_IN->PWM_AUX_1;
 
 
-  
+
 if(Ultrasonic->isCompleted == 0){
   digitalWrite(trigPin, LOW);
   delayMicroseconds(5);
@@ -43,6 +43,24 @@ if(Ultrasonic->isCompleted == 0){
  // Serial.println(Ultrasonic->Distance,3);
   Ultrasonic->isCompleted = 1;
   Ultrasonic->LastTime = millis();
+
+  for(int o=9; o > 0; o--){
+
+        Ultrasonic-> ErrayTemp[o-1]=Ultrasonic->ErrayDist[o];
+
+          }
+
+     Ultrasonic->ErrayDist[10]=Ultrasonic->Distance;
+
+  for(int p=8; p >= 0; p--){
+
+          Ultrasonic->ErrayDist[p]=Ultrasonic->ErrayTemp[p];
+
+        }
+  for(int n=9; n >= 0; n--){
+    Serial.println(Ultrasonic->ErrayDist[n]);
+  }
+
  }
  else if(Ultrasonic->isCompleted == 1 && (millis()-Ultrasonic->LastTime >= Ultrasonic->Interval)){
   Ultrasonic->isCompleted = 0 ;
@@ -52,20 +70,6 @@ else
 {
    Serial.println("Sinyal bozuk");
 }
-for(int i=9; i > 0; i--){
 
-      Ultrasonic-> ErrayTemp[i-1]=Ultrasonic->ErrayDist[i];
-
-        }
-
-   Ultrasonic->ErrayDist[10]=Ultrasonic->Distance;
-
-for(int i=8; i >= 0; i--){
-
-        Ultrasonic->ErrayDist[i]=Ultrasonic->ErrayTemp[i];
-
-      }
-  Serial.println(Ultrasonic->ErrayDist[1]);
   return Ultrasonic_OK;
 };
-
