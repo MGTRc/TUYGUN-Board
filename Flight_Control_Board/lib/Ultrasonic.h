@@ -19,6 +19,8 @@ int Distance;
  long Interval;
 unsigned long Msecond_1;
 unsigned long Msecond_2;
+float ErrayDist[];
+float ErrayTemp[];
 
 }Ultrasonic_HandleTypeDef;
 

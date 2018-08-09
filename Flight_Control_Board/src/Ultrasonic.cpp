@@ -7,6 +7,8 @@ Ultrasonic_Statustypedef Ultrasonic_Setup(struct __Ultrasonic_HandleTypeDef *Ult
   Ultrasonic-> Interval = 5000;
   Ultrasonic-> Msecond_1 = 0;
   Ultrasonic->Msecond_2 = millis();
+  Ultrasonic->ErrayDist[10];
+  Ultrasonic->ErrayTemp[9];
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 
@@ -39,5 +41,21 @@ else
 {
    Serial.println("Sinyal bozuk");
 }
+
+for(int i=9; i > 0; i--){
+
+      Ultrasonic-> ErrayTemp[i-1]=Ultrasonic->ErrayDist[i];
+
+        }
+
+   Ultrasonic->ErrayDist[10]=Ultrasonic->Distance;
+
+for(int i=8; i > 0; i--){
+
+        Ultrasonic->ErrayDist[i]=Ultrasonic->ErrayTemp[i];
+
+      }
+Serial.println(Ultrasonic->ErrayDist[1]);
+
   return Ultrasonic_OK;
 };
