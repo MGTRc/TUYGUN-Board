@@ -29,7 +29,7 @@ struct __PWM_IN_HandleTypeDef *PWM_IN){
 
 Ultrasonic->x = PWM_IN->PWM_AUX_1;
 
-
+if(Ultrasonic->x>1500){
 
 if(Ultrasonic->isCompleted == 0){
   digitalWrite(trigPin, LOW);
@@ -50,7 +50,7 @@ if(Ultrasonic->isCompleted == 0){
 
           }
 
-     Ultrasonic->ErrayDist[10]=Ultrasonic->Distance;
+     Ultrasonic->ErrayDist[9]=Ultrasonic->Distance;
 
   for(int p=8; p >= 0; p--){
 
@@ -65,11 +65,12 @@ if(Ultrasonic->isCompleted == 0){
  else if(Ultrasonic->isCompleted == 1 && (millis()-Ultrasonic->LastTime >= Ultrasonic->Interval)){
   Ultrasonic->isCompleted = 0 ;
  }
-
+}
 else
 {
    Serial.println("Sinyal bozuk");
 }
 
   return Ultrasonic_OK;
+
 };
