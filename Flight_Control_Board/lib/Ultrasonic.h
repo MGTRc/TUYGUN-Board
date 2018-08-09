@@ -3,8 +3,9 @@
 
 #include <Arduino.h>
 
-#define trigPin (12)
-#define echoPin (13)
+#define trigPin (7)
+#define echoPin (6)
+
 
 typedef enum Ultrasonic_Statustypedef {
  Ultrasonic_OK,
@@ -13,14 +14,15 @@ typedef enum Ultrasonic_Statustypedef {
 
 
 typedef struct __Ultrasonic_HandleTypeDef{
-int x;
-long Duration ;
-int Distance;
- long Interval;
-unsigned long Msecond_1;
-unsigned long Msecond_2;
-float ErrayDist[];
-float ErrayTemp[];
+  int x;
+  long Duration ;
+  float Distance;
+  long Interval;
+  unsigned long LastTime;
+  bool isCompleted;
+  float ErrayDist[];
+  float ErrayTemp[];
+ 
 
 }Ultrasonic_HandleTypeDef;
 
