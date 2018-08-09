@@ -22,7 +22,7 @@ typedef struct __Ultrasonic_HandleTypeDef{
   bool isCompleted;
   float ErrayDist[];
   float ErrayTemp[];
- 
+
 
 }Ultrasonic_HandleTypeDef;
 
