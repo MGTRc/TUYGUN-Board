@@ -66,7 +66,9 @@ if(Ultrasonic->isCompleted == 0){
   Ultrasonic->myFile = SD.open("log1.txt", FILE_WRITE);
   if (Ultrasonic->myFile)
     {
-    Ultrasonic->myFile.println(Ultrasonic->Distance,3);
+    Ultrasonic->myFile.println(millis());
+    Ultrasonic->myFile.printf("::::::");
+    Ultrasonic->myFile.printf(Ultrasonic->Distance,3);
     Ultrasonic->myFile.close(); // close the file
     }
   // if the file didn't open, print an error:
