@@ -2,10 +2,12 @@
 #define _Ultrasonic_H
 
 #include <Arduino.h>
+#include "../lib/SD/src/SD.h"
+#include "SPI.h"
 
 #define trigPin (7)
 #define echoPin (6)
-
+#define pinCS   (10)
 
 typedef enum Ultrasonic_Statustypedef {
  Ultrasonic_OK,
@@ -22,6 +24,7 @@ typedef struct __Ultrasonic_HandleTypeDef{
   bool isCompleted;
   float ErrayDist[10];
   float ErrayTemp[9];
+  File myFile;
 
 
 }Ultrasonic_HandleTypeDef;

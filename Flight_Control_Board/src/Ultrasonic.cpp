@@ -1,14 +1,15 @@
-#include "Ultrasonic.h"
-#include "PWM_IN.h"
+#include "../lib/Ultrasonic.h"
+#include "../lib/PWM_IN.h"
 
 #include <Arduino.h>
 
 Ultrasonic_Statustypedef Ultrasonic_Setup(struct __Ultrasonic_HandleTypeDef *Ultrasonic){
   Ultrasonic-> Interval = 400;
   Ultrasonic-> isCompleted = 0;
+  Ultrasonic->myFile;
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-  
+  pinMode(pinCS, OUTPUT);
  for(int j=0 ; j<9 ; j++ )
   {
     Ultrasonic->ErrayDist[j]=0;
@@ -18,6 +19,21 @@ Ultrasonic_Statustypedef Ultrasonic_Setup(struct __Ultrasonic_HandleTypeDef *Ult
   {
     Ultrasonic->ErrayTemp[k]=0;
   }
+
+
+
+Ultrasonic->myFile = SD.open("SDlog.txt", FILE_WRITE);
+
+if (SD.begin())
+    {
+    Serial.println(Ultrasonic->Distance);
+    }
+
+  else
+    {
+    Serial.println("SD card initialization failed");
+    return;
+    }
 
   return Ultrasonic_OK;
 };
@@ -39,7 +55,7 @@ if(Ultrasonic->isCompleted == 0){
   Ultrasonic->Duration = pulseIn(echoPin, HIGH );
   Ultrasonic-> Distance =Ultrasonic->Duration/29.10/2 ;
 
- // Serial.println(Ultrasonic->Distance,3);
+
   Ultrasonic->isCompleted = 1;
   Ultrasonic->LastTime = millis();
  }
@@ -64,11 +80,25 @@ if(Ultrasonic->isCompleted == 0){
 	 for(int n=9; n >= 0; n--){
 	   Serial.println(Ultrasonic->ErrayDist[n]);
 	 }
+
+
+   if (Ultrasonic->myFile)
+       {
+       myFile.println(Ultrasonic->Distance);
+       myFile.close();
+       }
+
+     else
+       {
+       Serial.println("error opening SDlog.txt");
+       }
+
+
 }
 
 else
 {
-   Serial.println("Sinyal bozuk");
+   Serial.println("No Signal");
 }
 
   return Ultrasonic_OK;
