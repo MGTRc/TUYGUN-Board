@@ -20,8 +20,8 @@ typedef struct __Ultrasonic_HandleTypeDef{
   long Interval;
   unsigned long LastTime;
   bool isCompleted;
-  float ErrayDist[];
-  float ErrayTemp[];
+  float ErrayDist[10];
+  float ErrayTemp[9];
 
 
 }Ultrasonic_HandleTypeDef;

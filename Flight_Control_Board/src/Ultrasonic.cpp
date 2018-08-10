@@ -6,10 +6,9 @@
 Ultrasonic_Statustypedef Ultrasonic_Setup(struct __Ultrasonic_HandleTypeDef *Ultrasonic){
   Ultrasonic-> Interval = 400;
   Ultrasonic-> isCompleted = 0;
-  Ultrasonic->ErrayDist[10];
-  Ultrasonic->ErrayTemp[9];
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
+  
  for(int j=0 ; j<9 ; j++ )
   {
     Ultrasonic->ErrayDist[j]=0;
@@ -49,27 +48,22 @@ if(Ultrasonic->isCompleted == 0){
   Ultrasonic->isCompleted = 0 ;
  }
 
- for(int o=9; o > 0; o--){
+	 for(int o=9; o > 0; o--){
 
-       Ultrasonic-> ErrayTemp[o-1]=Ultrasonic->ErrayDist[o];
+		   Ultrasonic-> ErrayTemp[o-1]=Ultrasonic->ErrayDist[o];
 
-         }
+			 }
 
-    Ultrasonic->ErrayDist[9]=Ultrasonic->Distance;
+		Ultrasonic->ErrayDist[9]=Ultrasonic->Distance;
 
- for(int p=8; p >= 0; p--){
+	 for(int p=8; p >= 0; p--){
 
-         Ultrasonic->ErrayDist[p]=Ultrasonic->ErrayTemp[p];
+			 Ultrasonic->ErrayDist[p]=Ultrasonic->ErrayTemp[p];
 
-       }
- for(int n=9; n >= 0; n--){
-   Serial.println(Ultrasonic->ErrayDist[n]);
- }
-
-
-
-
-
+		   }
+	 for(int n=9; n >= 0; n--){
+	   Serial.println(Ultrasonic->ErrayDist[n]);
+	 }
 }
 
 else
