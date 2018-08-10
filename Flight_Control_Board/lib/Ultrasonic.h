@@ -2,8 +2,9 @@
 #define _Ultrasonic_H
 
 #include <Arduino.h>
-#include "../lib/SD/src/SD.h"
-#include "SPI.h"
+#include "../SD/src/SD.h"
+#include "../SPI/SPI.h"
+#include "../lib/PWM_IN.h"
 
 #define trigPin (7)
 #define echoPin (6)
@@ -25,8 +26,6 @@ typedef struct __Ultrasonic_HandleTypeDef{
   float ErrayDist[10];
   float ErrayTemp[9];
   File myFile;
-
-
 }Ultrasonic_HandleTypeDef;
 
 

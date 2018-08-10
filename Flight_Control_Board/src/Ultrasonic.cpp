@@ -1,15 +1,24 @@
 #include "../lib/Ultrasonic.h"
-#include "../lib/PWM_IN.h"
-
-#include <Arduino.h>
 
 Ultrasonic_Statustypedef Ultrasonic_Setup(struct __Ultrasonic_HandleTypeDef *Ultrasonic){
   Ultrasonic-> Interval = 400;
   Ultrasonic-> isCompleted = 0;
-  Ultrasonic->myFile;
+
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   pinMode(pinCS, OUTPUT);
+
+  if (SD.begin())
+    {
+    Serial.println("SD Kart basariyla okundu.");
+    }
+
+  else
+    {
+    Serial.println("SD Kartta bir sikinti var.");
+    return;
+    }
+
  for(int j=0 ; j<9 ; j++ )
   {
     Ultrasonic->ErrayDist[j]=0;
@@ -19,22 +28,6 @@ Ultrasonic_Statustypedef Ultrasonic_Setup(struct __Ultrasonic_HandleTypeDef *Ult
   {
     Ultrasonic->ErrayTemp[k]=0;
   }
-
-
-
-Ultrasonic->myFile = SD.open("SDlog.txt", FILE_WRITE);
-
-if (SD.begin())
-    {
-    Serial.println(Ultrasonic->Distance);
-    }
-
-  else
-    {
-    Serial.println("SD card initialization failed");
-    return;
-    }
-
   return Ultrasonic_OK;
 };
 
@@ -53,8 +46,34 @@ if(Ultrasonic->isCompleted == 0){
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
   Ultrasonic->Duration = pulseIn(echoPin, HIGH );
-  Ultrasonic-> Distance =Ultrasonic->Duration/29.10/2 ;
+  Ultrasonic->Distance =Ultrasonic->Duration/29.10/2 ;
+  Serial.println(Ultrasonic->Distance,3);
 
+  for(int o=9; o > 0; o--){
+
+       Ultrasonic-> ErrayTemp[o-1]=Ultrasonic->ErrayDist[o];
+
+       }
+
+    Ultrasonic->ErrayDist[9]=Ultrasonic->Distance;
+
+   for(int p=8; p >= 0; p--){
+
+       Ultrasonic->ErrayDist[p]=Ultrasonic->ErrayTemp[p];
+
+       }
+
+  Ultrasonic->myFile = SD.open("log1.txt", FILE_WRITE);
+  if (Ultrasonic->myFile)
+    {
+    Ultrasonic->myFile.println(Ultrasonic->Distance,3);
+    Ultrasonic->myFile.close(); // close the file
+    }
+  // if the file didn't open, print an error:
+  else
+    {
+    Serial.println("error opening test.txt");
+    }
 
   Ultrasonic->isCompleted = 1;
   Ultrasonic->LastTime = millis();
@@ -63,39 +82,7 @@ if(Ultrasonic->isCompleted == 0){
  else if(Ultrasonic->isCompleted == 1 && (millis()-Ultrasonic->LastTime >= Ultrasonic->Interval)){
   Ultrasonic->isCompleted = 0 ;
  }
-
-	 for(int o=9; o > 0; o--){
-
-		   Ultrasonic-> ErrayTemp[o-1]=Ultrasonic->ErrayDist[o];
-
-			 }
-
-		Ultrasonic->ErrayDist[9]=Ultrasonic->Distance;
-
-	 for(int p=8; p >= 0; p--){
-
-			 Ultrasonic->ErrayDist[p]=Ultrasonic->ErrayTemp[p];
-
-		   }
-	 for(int n=9; n >= 0; n--){
-	   Serial.println(Ultrasonic->ErrayDist[n]);
-	 }
-
-
-   if (Ultrasonic->myFile)
-       {
-       myFile.println(Ultrasonic->Distance);
-       myFile.close();
-       }
-
-     else
-       {
-       Serial.println("error opening SDlog.txt");
-       }
-
-
 }
-
 else
 {
    Serial.println("No Signal");
