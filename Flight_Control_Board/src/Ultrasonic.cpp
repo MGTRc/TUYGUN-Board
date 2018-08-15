@@ -35,9 +35,9 @@ Ultrasonic_Statustypedef Ultrasonic_Start(
 struct __Ultrasonic_HandleTypeDef *Ultrasonic,
 struct __PWM_IN_HandleTypeDef *PWM_IN){
 
-Ultrasonic->x = PWM_IN->PWM_AUX_1;
+Ultrasonic->pwmx = PWM_IN->PWM_AUX_1;
 
-if(Ultrasonic->x>1500){
+if(Ultrasonic->pwmx>1500){
 
 if(Ultrasonic->isCompleted == 0){
   digitalWrite(trigPin, LOW);
@@ -66,9 +66,7 @@ if(Ultrasonic->isCompleted == 0){
   Ultrasonic->myFile = SD.open("log1.txt", FILE_WRITE);
   if (Ultrasonic->myFile)
     {
-    Ultrasonic->myFile.println(millis());
-    Ultrasonic->myFile.printf("::::::");
-    Ultrasonic->myFile.printf(Ultrasonic->Distance,3);
+    Ultrasonic->myFile.println(Ultrasonic->Distance,3);
     Ultrasonic->myFile.close(); // close the file
     }
   // if the file didn't open, print an error:

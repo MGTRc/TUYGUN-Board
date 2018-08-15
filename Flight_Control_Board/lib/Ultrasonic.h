@@ -17,7 +17,7 @@ typedef enum Ultrasonic_Statustypedef {
 
 
 typedef struct __Ultrasonic_HandleTypeDef{
-  int x;
+  int pwmx;
   long Duration ;
   float Distance;
   long Interval;
