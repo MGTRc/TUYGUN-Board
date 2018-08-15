@@ -2,8 +2,8 @@
 #define _Ultrasonic_H
 
 #include <Arduino.h>
-#include "../SD/src/SD.h"
-#include "../SPI/SPI.h"
+#include "../lib/SD/src/SD.h"
+#include "../lib/SPI/SPI.h"
 #include "../lib/PWM_IN.h"
 
 #define trigPin (7)
