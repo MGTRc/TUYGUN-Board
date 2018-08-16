@@ -2,9 +2,8 @@
 #define _Ultrasonic_H
 
 #include <Arduino.h>
-#include "../lib/SD/src/SD.h"
-#include "../lib/SPI/SPI.h"
 #include "../lib/PWM_IN.h"
+#include "../lib/PWM_OUT.h"
 
 #define trigPin (7)
 #define echoPin (6)
@@ -25,13 +24,12 @@ typedef struct __Ultrasonic_HandleTypeDef{
   bool isCompleted;
   float ErrayDist[10];
   float ErrayTemp[9];
-  File myFile;
 }Ultrasonic_HandleTypeDef;
 
 
 Ultrasonic_Statustypedef Ultrasonic_Setup(struct __Ultrasonic_HandleTypeDef *Ultrasonic);
 Ultrasonic_Statustypedef Ultrasonic_Start(struct __Ultrasonic_HandleTypeDef *Ultrasonic,
-struct __PWM_IN_HandleTypeDef *PWM_IN);
+struct __PWM_IN_HandleTypeDef *PWM_IN , struct __PWM_OUT_HandleTypeDef *PWM_OUT);
 
 
 #endif

@@ -17,14 +17,18 @@ Vtail_StatusTypeDef Vtail_Start(
     cal_rudder    = Vtail->rudder_coef * abs( 1500 - (Vtail->IN_Rudder) );
 
     PWM_OUT->PWM_VTail_Left = 1500
-    + Vtail_Reverse(cal_elevator,0) + Vtail_Reverse(cal_rudder,0);
-    PWM_OUT->PWM_VTail_Right = 1500
-    + Vtail_Reverse(cal_elevator,1) + Vtail_Reverse(cal_rudder,0);
+      + Vtail_Reverse(cal_elevator,0) + Vtail_Reverse(cal_rudder,0);
 
-  }else if(Vtail->IN_Spoiler < Vtail->Spoiler_Threshold){
+    PWM_OUT->PWM_VTail_Right = 1500
+      + Vtail_Reverse(cal_elevator,1) + Vtail_Reverse(cal_rudder,0);
+  }
+
+  else if(Vtail->IN_Spoiler > Vtail->Spoiler_Threshold){
     PWM_OUT->PWM_VTail_Left = 1000;
     PWM_OUT->PWM_VTail_Right = 2000;
-  }else{
+  }
+
+  else{
     return Vtail_ERROR;
   }
 

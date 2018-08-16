@@ -15,10 +15,11 @@ void setup() {
 }
 
 void loop() {
-    PWM_IN_Read(&PWM_IN);
+    PWM_IN_Read(&PWM_IN);  // Read PWM Values from PİXHAWK 2.4.8
 
-    Ultrasonic_Start(&Ultrasonic,&PWM_IN);
 
+    Ultrasonic_Start(&Ultrasonic,&PWM_IN, &PWM_OUT);
+    
 
     PWM_OUT_Write(&PWM_OUT);
 }
