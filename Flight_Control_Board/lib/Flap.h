@@ -18,17 +18,18 @@ typedef struct __Flap_HandleTypeDef{
   bool isCompleted;
   uint8_t Interval;
   unsigned long LastTime;
-  uint16_t xyz;
+  uint16_t currentValue;
+  uint16_t AUX;
 }Flap_HandleTypeDef;
 
 
-Flap_StatusTypeDef Flap_Setup(struct _Flap_HandleTypeDef *Flap,struct __PWM_OUT_HandleTypeDef *PWM_OUT );
+Flap_StatusTypeDef Flap_Setup(struct __Flap_HandleTypeDef *Flap,struct __PWM_OUT_HandleTypeDef *PWM_OUT );
 Flap_StatusTypeDef Flap_Start(
 
   struct __Flap_HandleTypeDef *Flap ,
   struct __PWM_OUT_HandleTypeDef *PWM_OUT ,
   struct __PWM_IN_HandleTypeDef *PWM_IN);
 
-uint16_t poscheck(uint16_t AUX);
+uint16_t poscheck(uint16_t AUX,struct __Flap_HandleTypeDef *Flap);
 
 #endif
