@@ -20,7 +20,7 @@ void setup() {
 void loop() {
     PWM_IN_Read(&PWM_IN);  // Read PWM Values from PIXHAWK 2.4.8
 
-    Serial.println(PWM_IN.PWM_AUX_2);
+    //Serial.println(PWM_IN.PWM_AUX_2);
     //Ultrasonic_Start(&Ultrasonic,&PWM_IN, &PWM_OUT);
     Flap_Start(&Flap,&PWM_OUT,&PWM_IN);
 

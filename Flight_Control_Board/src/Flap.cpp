@@ -6,18 +6,19 @@ Flap_StatusTypeDef Flap_Start(
   struct __PWM_IN_HandleTypeDef *PWM_IN){
 
 Flap->AUX = PWM_IN->PWM_AUX_2;
+Serial.println(poscheck(Flap->AUX,Flap));
 
 if(Flap->lastposition > poscheck(Flap->AUX,Flap)){
 
       for(Flap->lastposition; Flap->lastposition > poscheck(Flap->AUX,Flap); ){
             if(Flap->isCompleted==false){
               PWM_OUT->PWM_Flap_Left = Flap->lastposition;
-              Flap->lastposition-=10;
+              Flap->lastposition--;
               Flap->isCompleted=true;
               Flap->LastTime=millis();
               }
             else if((Flap->isCompleted==true) && (millis() - Flap->LastTime > Flap->Interval)){
-              Flap->isCompleted==false;
+              Flap->isCompleted=false;
               }
       }
 }
@@ -27,7 +28,7 @@ else if(Flap->lastposition < poscheck(Flap->AUX,Flap)){
       for(Flap->lastposition; Flap->lastposition < poscheck(Flap->AUX,Flap); ){
           if(Flap->isCompleted==false){
             PWM_OUT->PWM_Flap_Left = Flap->lastposition;
-            Flap->lastposition+=10;
+            Flap->lastposition++;
             Flap->isCompleted=true;
             Flap->LastTime=millis();
             }
@@ -38,8 +39,9 @@ else if(Flap->lastposition < poscheck(Flap->AUX,Flap)){
 }
 
 else{
-   Serial.println("Hata");
+  // Serial.println("Hata");
 }
+
 
 
 
@@ -50,9 +52,9 @@ return Flap_OK;
 Flap_StatusTypeDef  Flap_Setup(struct __Flap_HandleTypeDef *Flap, struct __PWM_OUT_HandleTypeDef *PWM_OUT){
   PWM_OUT->PWM_Flap_Left = 2000;
   Flap->lastposition = 2000;
-  Flap->S0=850;
+  Flap->S0=800;
   Flap->S1=1100; Flap->P1=1000;
-  Flap->S2=1500; Flap->P2=1350;
+  Flap->S2=1500; Flap->P2=1300;
   Flap->S3=1800; Flap->P3=1700;
   Flap->S4=2000; Flap->P4=2000;
   Flap->isCompleted=false;
