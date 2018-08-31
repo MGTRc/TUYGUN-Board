@@ -4,10 +4,12 @@
 #include <Arduino.h>
 #include "../lib/PWM_IN.h"
 #include "../lib/PWM_OUT.h"
+#include "../lib/PWM.hpp"
 
-#define trigPin (7)
-#define echoPin (6)
+#define trigPin (21)
+#define echoPin (20)
 #define pinCS   (10)
+
 
 typedef enum Ultrasonic_Statustypedef {
  Ultrasonic_OK,
@@ -16,6 +18,7 @@ typedef enum Ultrasonic_Statustypedef {
 
 
 typedef struct __Ultrasonic_HandleTypeDef{
+  int led;
   int pwmx;
   long Duration ;
   float Distance;

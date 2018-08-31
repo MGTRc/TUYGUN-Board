@@ -4,8 +4,8 @@
 #include <Arduino.h>
 #include "../lib/Servo/src/Servo.h"
 
-#define Aileron_Left_OUT  (2)
-#define Aileron_Right_OUT (3)
+#define Aileron_Left_OUT  (12)
+#define Aileron_Right_OUT (13)
 #define VTail_Left_OUT    (4)
 #define VTail_Right_OUT   (5)
 #define Flap_Left_OUT     (6)
@@ -38,6 +38,9 @@ typedef struct __PWM_OUT_HandleTypeDef{
   uint16_t PWM_Cover_1;
   uint16_t PWM_Cover_2;
 
+  uint16_t hafiza1;
+  uint16_t hafiza2;
+
   //Servos
   Servo Aileron_Left,Aileron_Right;
   Servo Vtail_Left,Vtail_Right;
@@ -50,5 +53,6 @@ typedef struct __PWM_OUT_HandleTypeDef{
 //Functions
 PWM_OUT_StatusTypeDef PWM_OUT_Setup(struct __PWM_OUT_HandleTypeDef *PWM_OUT);
 PWM_OUT_StatusTypeDef PWM_OUT_Write(struct __PWM_OUT_HandleTypeDef *PWM_OUT);
+PWM_OUT_StatusTypeDef PWM_OUT_Memory(struct __PWM_OUT_HandleTypeDef *PWM_OUT,struct __PWM_IN_HandleTypeDef *PWM_IN);
 PWM_OUT_StatusTypeDef PWM_OUT_Default_Values(struct __PWM_OUT_HandleTypeDef *PWM_OUT);
 #endif
