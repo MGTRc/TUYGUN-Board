@@ -19,6 +19,7 @@ typedef struct __Reverse_HandleTypeDef{
 
   int Reverse_coef;
   int Reverse_Throttle;
+  int Throttle_min;
 
 }Reverse_HandleTypeDef;
 

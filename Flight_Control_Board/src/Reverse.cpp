@@ -3,6 +3,7 @@
 
 Reverse_Statustypedef Reverse_Setup(struct __Reverse_HandleTypeDef *Reverse){
 
+Reverse->Throttle_min = 1000;
 
   return Reverse_OK;
 };
@@ -16,7 +17,16 @@ Reverse->Reverse_coef = PWM_IN->PWM_AUX_2;
 if(Reverse->Reverse_coef>1500) {
 Serial.println(PWM_IN->PWM_Throttle);
 
-Reverse->Reverse_Throttle= map(PWM_IN->PWM_Throttle,1500,2000,1000,2000);
+if(PWM_IN->PWM_Throttle<Reverse->Throttle_min)  {
+  Reverse->Throttle_min = PWM_IN->PWM_Throttle ;
+}
+Reverse->Reverse_Throttle= map(PWM_IN->PWM_Throttle,1500,2000,Reverse->Throttle_min,2000);
+
+}
+else {
+
+
+
 
 }
 
