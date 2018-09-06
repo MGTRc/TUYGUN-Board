@@ -21,9 +21,6 @@ PWM_OUT_StatusTypeDef PWM_OUT_Setup(struct __PWM_OUT_HandleTypeDef *PWM_OUT){
 };
 
 PWM_OUT_StatusTypeDef PWM_OUT_Write(struct __PWM_OUT_HandleTypeDef *PWM_OUT){
-  int anlik = PWM_OUT->hafiza1 - PWM_OUT->PWM_VTail_Left;
-
-  Serial.println(abs(anlik)>20);
   //Ailerons
   PWM_OUT->Aileron_Left.writeMicroseconds(PWM_OUT->PWM_Aileron_Left);
   PWM_OUT->Aileron_Right.writeMicroseconds(PWM_OUT->PWM_Aileron_Right);
