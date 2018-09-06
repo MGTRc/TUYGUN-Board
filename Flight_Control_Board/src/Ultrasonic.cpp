@@ -4,18 +4,18 @@
 Ultrasonic_Statustypedef Ultrasonic_Setup(struct __Ultrasonic_HandleTypeDef *Ultrasonic){
   Ultrasonic-> Interval = 400;
   Ultrasonic-> isCompleted = false;
-
+  digitalWrite(42, LOW);
 
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-  pinMode(13, OUTPUT);
+  pinMode(42, OUTPUT);
 
- for(int j=0 ; j<9 ; j++ )
+ for(int j=0 ; j<2 ; j++ )
   {
     Ultrasonic->ErrayDist[j]=0;
   }
 
- for(int k=0 ; k<8 ; k++ )
+ for(int k=0 ; k<1 ; k++ )
   {
     Ultrasonic->ErrayTemp[k]=0;
   }
@@ -23,10 +23,10 @@ Ultrasonic_Statustypedef Ultrasonic_Setup(struct __Ultrasonic_HandleTypeDef *Ult
 };
 
 Ultrasonic_Statustypedef Ultrasonic_Start(
-struct __Ultrasonic_HandleTypeDef *Ultrasonic,
-struct __PWM_IN_HandleTypeDef *PWM_IN, struct __PWM_OUT_HandleTypeDef *PWM_OUT){
+  struct __Ultrasonic_HandleTypeDef *Ultrasonic,
+  struct __PWM_IN_HandleTypeDef *PWM_IN, struct __PWM_OUT_HandleTypeDef *PWM_OUT){
 
-Ultrasonic->pwmx = PWM_IN->PWM_AUX_2;
+  Ultrasonic->pwmx = PWM_IN->PWM_AUX_2;
 
 if(Ultrasonic->pwmx>1500){
 
@@ -54,20 +54,26 @@ if(Ultrasonic->isCompleted == 0){
 
   Ultrasonic->isCompleted = true;
   Ultrasonic->LastTime = millis();
-  if(Ultrasonic->Distance < 15.08) {
+  Serial.println(Ultrasonic->Distance);
 
-  }
  }
  else if((Ultrasonic->isCompleted == true) && (millis()-Ultrasonic->LastTime >= Ultrasonic->Interval)){
   Ultrasonic->isCompleted = false;
  }
+
+
+    if(Ultrasonic->Distance < 13){
+      digitalWrite(42, HIGH);
+    }                                     //LED..
+    else{
+      digitalWrite(42, LOW);
+    }
+
 }
 else
 {
+
    Serial.println("No Signal");
 }
-
-
   return Ultrasonic_OK;
-
 };

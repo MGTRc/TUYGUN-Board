@@ -2,6 +2,7 @@
 #include "../lib/Servo/src/Servo.h"
 
 PWM_OUT_StatusTypeDef PWM_OUT_Setup(struct __PWM_OUT_HandleTypeDef *PWM_OUT){
+
   //Ailerons
   PWM_OUT->Aileron_Left.attach(Aileron_Left_OUT);
   PWM_OUT->Aileron_Right.attach(Aileron_Right_OUT);
@@ -21,9 +22,25 @@ PWM_OUT_StatusTypeDef PWM_OUT_Setup(struct __PWM_OUT_HandleTypeDef *PWM_OUT){
 };
 
 PWM_OUT_StatusTypeDef PWM_OUT_Write(struct __PWM_OUT_HandleTypeDef *PWM_OUT){
-  int anlik = PWM_OUT->hafiza1 - PWM_OUT->PWM_VTail_Left;
+  for(int o=2; o > 0; o--){
 
-  Serial.println(abs(anlik)>20);
+       PWM_OUT-> ErrayTemp_1[o-1] = PWM_OUT->ErrayDist_1[o];
+       PWM_OUT-> ErrayTemp_2[o-1] = PWM_OUT->ErrayDist_2[o];
+       }
+
+  PWM_OUT->ErrayDist_1[2]=PWM_OUT->PWM_VTail_Left;
+  PWM_OUT->ErrayDist_2[2]=PWM_OUT->PWM_VTail_Right;
+
+   for(int p=1; p >= 0; p--){
+
+       PWM_OUT->ErrayDist_1[p]=PWM_OUT->ErrayTemp_1[p];
+       PWM_OUT->ErrayDist_2[p]=PWM_OUT->ErrayTemp_2[p];
+       }
+
+  PWM_OUT->PWM_VTail_Left =
+      (uint16_t)(PWM_OUT->ErrayDist_1[2]*0.33  + PWM_OUT->ErrayDist_1[1]*0.33 + PWM_OUT->ErrayDist_1[0]*0.33);
+  PWM_OUT->PWM_VTail_Right =
+      (uint16_t)(PWM_OUT->ErrayDist_2[2]*0.33  + PWM_OUT->ErrayDist_2[1]*0.33 + PWM_OUT->ErrayDist_2[0]*0.33);
   //Ailerons
   PWM_OUT->Aileron_Left.writeMicroseconds(PWM_OUT->PWM_Aileron_Left);
   PWM_OUT->Aileron_Right.writeMicroseconds(PWM_OUT->PWM_Aileron_Right);
@@ -39,11 +56,7 @@ PWM_OUT_StatusTypeDef PWM_OUT_Write(struct __PWM_OUT_HandleTypeDef *PWM_OUT){
   PWM_OUT->Cover_1.writeMicroseconds(PWM_OUT->PWM_Cover_1);
   PWM_OUT->Cover_2.writeMicroseconds(PWM_OUT->PWM_Cover_2);
   return PWM_OUT_OK;
-};
 
-PWM_OUT_StatusTypeDef PWM_OUT_Memory(struct __PWM_OUT_HandleTypeDef *PWM_OUT,struct __PWM_IN_HandleTypeDef *PWM_IN){
-  PWM_OUT->hafiza1 = PWM_OUT->PWM_VTail_Left;
-  PWM_OUT->hafiza2 = PWM_OUT->PWM_VTail_Right;
 };
 
 PWM_OUT_StatusTypeDef PWM_OUT_Default_Values(struct __PWM_OUT_HandleTypeDef *PWM_OUT){
@@ -57,6 +70,5 @@ PWM_OUT_StatusTypeDef PWM_OUT_Default_Values(struct __PWM_OUT_HandleTypeDef *PWM
   PWM_OUT->PWM_Landing_Gear   = 1500;
   PWM_OUT->PWM_Cover_1        = 1500;
   PWM_OUT->PWM_Cover_2        = 1500;
-
   return PWM_OUT_OK;
 };

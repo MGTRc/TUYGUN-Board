@@ -19,7 +19,7 @@ PWM Rudder(3);
 void setup() {
     PWM_In_Setup(&PWM_IN);
     PWM_OUT_Setup(&PWM_OUT);
-    Ultrasonic_Setup(&Ultrasonic);
+    //Ultrasonic_Setup(&Ultrasonic);
     //Flap_Setup(&Flap,&PWM_OUT);
     Vtail_Setup(&Vtail);
     Elevator.begin(true);
@@ -31,13 +31,13 @@ void setup() {
 
 void loop() {
     PWM_IN_Read(&PWM_IN);  // Read PWM Values from PIXHAWK 2.4.8
-    PWM_IN.PWM_Elevator = Elevator.getValue() ;
+    PWM_IN.PWM_Elevator = Elevator.getValue();
+    PWM_IN.PWM_Rudder  = Rudder.getValue();
     //PWM_IN.PWM_Aileron = Aileron.getValue() ;
     //PWM_IN.PWM_Throttle =Throttle.getValue() ;
-    PWM_IN.PWM_Rudder  = Rudder.getValue();
+
     Vtail_Start(&Vtail,&PWM_OUT,&PWM_IN);
-    Ultrasonic_Start(&Ultrasonic,&PWM_IN, &PWM_OUT);
+    //Ultrasonic_Start(&Ultrasonic,&PWM_IN, &PWM_OUT);
     //Flap_Start(&Flap,&PWM_OUT,&PWM_IN);
     PWM_OUT_Write(&PWM_OUT);
-    PWM_OUT_Memory(&PWM_OUT,&PWM_IN);
 }
