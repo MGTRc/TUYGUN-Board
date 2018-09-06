@@ -18,6 +18,7 @@ typedef enum Reverse_Statustypedef {
 typedef struct __Reverse_HandleTypeDef{
 
   int Reverse_coef;
+  int Reverse_Throttle;
 
 }Reverse_HandleTypeDef;
 
