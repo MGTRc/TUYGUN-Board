@@ -22,7 +22,6 @@ PWM_OUT_StatusTypeDef PWM_OUT_Setup(struct __PWM_OUT_HandleTypeDef *PWM_OUT){
 };
 
 PWM_OUT_StatusTypeDef PWM_OUT_Write(struct __PWM_OUT_HandleTypeDef *PWM_OUT){
-<<<<<<< HEAD
   for(int o=2; o > 0; o--){
 
        PWM_OUT-> ErrayTemp_1[o-1] = PWM_OUT->ErrayDist_1[o];
@@ -42,8 +41,6 @@ PWM_OUT_StatusTypeDef PWM_OUT_Write(struct __PWM_OUT_HandleTypeDef *PWM_OUT){
       (uint16_t)(PWM_OUT->ErrayDist_1[2]*0.33  + PWM_OUT->ErrayDist_1[1]*0.33 + PWM_OUT->ErrayDist_1[0]*0.33);
   PWM_OUT->PWM_VTail_Right =
       (uint16_t)(PWM_OUT->ErrayDist_2[2]*0.33  + PWM_OUT->ErrayDist_2[1]*0.33 + PWM_OUT->ErrayDist_2[0]*0.33);
-=======
->>>>>>> 914278733e9db27db9fbb05f672a8d02b8143552
   //Ailerons
   PWM_OUT->Aileron_Left.writeMicroseconds(PWM_OUT->PWM_Aileron_Left);
   PWM_OUT->Aileron_Right.writeMicroseconds(PWM_OUT->PWM_Aileron_Right);
