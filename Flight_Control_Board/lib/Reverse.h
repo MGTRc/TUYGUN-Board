@@ -17,10 +17,17 @@ typedef enum Reverse_Statustypedef {
 
 typedef struct __Reverse_HandleTypeDef{
 
-  int Reverse_coef;
-  int Reverse_Throttle;
-  int Throttle_min;
+ int Reverse_coef;
+ int Reverse_Throttle;
+ int Throttle_min;
+ int x ;
+ int y;
+ int z;
+ unsigned long LastTimeRev;
+ bool isCompletedRev;
 
+long IntervalRev1;
+long IntervalRev2;
 
 }Reverse_HandleTypeDef;
 
