@@ -44,14 +44,14 @@ else {
       Reverse->isCompletedRev = true;
       Reverse->LastTimeRev = millis();
     }
-    else if ( millis()  >= 6000 && Reverse->y ==1) {
+    else if ( millis()  >= Reverse -> IntervalRev1 && Reverse->y ==1) {
     PWM_OUT->PWM_Throttle = 1500;
     Serial.print("First: ");
     Serial.println(millis());
     Reverse->y = 0 ;
 
   }
-  else if (millis() >= 12000 && Reverse->z ==1) {
+  else if (millis() >= Reverse -> IntervalRev2 && Reverse->z ==1) {
     PWM_OUT->PWM_Throttle = 1000;
     Serial.print("Second: ");
     Serial.println(millis());
